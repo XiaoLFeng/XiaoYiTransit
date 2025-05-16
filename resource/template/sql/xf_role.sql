@@ -1,6 +1,6 @@
 -- 角色表
 CREATE TABLE IF NOT EXISTS `xf_role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '角色ID',
+  `id` varchar(36) NOT NULL COMMENT '角色ID',
   `name` varchar(50) NOT NULL COMMENT '角色名称',
   `code` varchar(50) NOT NULL COMMENT '角色编码',
   `description` varchar(255) DEFAULT NULL COMMENT '角色描述',

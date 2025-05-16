@@ -4,12 +4,11 @@ import (
 	"context"
 	"github.com/XiaoLFeng/bamboo-utils/bhandler/bhook"
 	"github.com/XiaoLFeng/bamboo-utils/bhandler/bmiddle"
+	"xiao-yi-transit/internal/controller/auth"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gcmd"
-
-	"xiao-yi-transit/internal/controller/hello"
 )
 
 var (
@@ -33,7 +32,7 @@ var (
 				})
 				group.Middleware(ghttp.MiddlewareHandlerResponse)
 				group.Bind(
-					hello.NewV1(),
+					auth.NewV1(),
 				)
 			})
 

@@ -1,6 +1,6 @@
 -- 车辆表
 CREATE TABLE IF NOT EXISTS `xf_vehicle` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '车辆ID',
+  `id` varchar(36) NOT NULL COMMENT '车辆ID',
   `plate_number` varchar(20) NOT NULL COMMENT '车牌号',
   `model` varchar(50) NOT NULL COMMENT '车辆型号',
   `purchase_date` date NOT NULL COMMENT '购买日期',
