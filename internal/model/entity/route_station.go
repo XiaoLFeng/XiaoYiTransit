@@ -10,9 +10,9 @@ import (
 
 // RouteStation is the golang structure for table route_station.
 type RouteStation struct {
-	Id                int         `json:"id"                  orm:"id"                  description:"ID"`         // ID
-	RouteId           int         `json:"route_id"            orm:"route_id"            description:"线路ID"`       // 线路ID
-	StationId         int         `json:"station_id"          orm:"station_id"          description:"站点ID"`       // 站点ID
+	RouteStationUuid  string      `json:"route_station_uuid"  orm:"route_station_uuid"  description:"线路站点UUID"`   // 线路站点UUID
+	RouteUuid         string      `json:"route_uuid"          orm:"route_uuid"          description:"线路UUID"`     // 线路UUID
+	StationUuid       string      `json:"station_uuid"        orm:"station_uuid"        description:"站点UUID"`     // 站点UUID
 	Sequence          int         `json:"sequence"            orm:"sequence"            description:"站点顺序"`       // 站点顺序
 	DistanceFromStart float64     `json:"distance_from_start" orm:"distance_from_start" description:"距起点距离(km)"`  // 距起点距离(km)
 	EstimatedTime     int         `json:"estimated_time"      orm:"estimated_time"      description:"预计到达时间(分钟)"` // 预计到达时间(分钟)

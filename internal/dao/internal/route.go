@@ -21,7 +21,7 @@ type RouteDao struct {
 
 // RouteColumns defines and stores column names for the table xf_route.
 type RouteColumns struct {
-	Id             string // 线路ID
+	RouteUuid      string // 线路UUID
 	RouteNumber    string // 线路编号
 	Name           string // 线路名称
 	StartStation   string // 起始站点
@@ -40,7 +40,7 @@ type RouteColumns struct {
 
 // routeColumns holds the columns for the table xf_route.
 var routeColumns = RouteColumns{
-	Id:             "id",
+	RouteUuid:      "route_uuid",
 	RouteNumber:    "route_number",
 	Name:           "name",
 	StartStation:   "start_station",

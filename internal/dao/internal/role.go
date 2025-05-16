@@ -21,7 +21,7 @@ type RoleDao struct {
 
 // RoleColumns defines and stores column names for the table xf_role.
 type RoleColumns struct {
-	Id          string // 角色ID
+	RoleUuid    string // 角色UUID
 	Name        string // 角色名称
 	Code        string // 角色编码
 	Description string // 角色描述
@@ -33,7 +33,7 @@ type RoleColumns struct {
 
 // roleColumns holds the columns for the table xf_role.
 var roleColumns = RoleColumns{
-	Id:          "id",
+	RoleUuid:    "role_uuid",
 	Name:        "name",
 	Code:        "code",
 	Description: "description",

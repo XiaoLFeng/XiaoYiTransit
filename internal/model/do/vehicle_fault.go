@@ -12,16 +12,16 @@ import (
 // VehicleFault is the golang structure of table xf_vehicle_fault for DAO operations like Where/Data.
 type VehicleFault struct {
 	g.Meta           `orm:"table:xf_vehicle_fault, do:true"`
-	Id               interface{} // 故障ID
-	VehicleId        interface{} // 车辆ID
-	ReporterId       interface{} // 报告人ID
+	VehicleFaultUuid interface{} // 故障UUID
+	VehicleUuid      interface{} // 车辆UUID
+	UserUuid         interface{} // 报告人UUID
 	FaultType        interface{} // 故障类型
 	FaultDescription interface{} // 故障描述
 	ReportDate       *gtime.Time // 报告时间
 	FaultLocation    interface{} // 故障发生地点
 	Severity         interface{} // 严重程度: 1-轻微, 2-一般, 3-严重, 4-危险
 	Status           interface{} // 状态: 0-已取消, 1-待处理, 2-处理中, 3-已解决
-	MaintenanceId    interface{} // 关联的维修记录ID
+	MaintenanceUuid  interface{} // 关联的维修记录UUID
 	Notes            interface{} // 备注
 	CreatedAt        *gtime.Time // 创建时间
 	UpdatedAt        *gtime.Time // 更新时间

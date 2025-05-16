@@ -21,7 +21,7 @@ type VehicleDao struct {
 
 // VehicleColumns defines and stores column names for the table xf_vehicle.
 type VehicleColumns struct {
-	Id                  string // 车辆ID
+	VehicleUuid         string // 车辆UUID
 	PlateNumber         string // 车牌号
 	Model               string // 车辆型号
 	PurchaseDate        string // 购买日期
@@ -40,7 +40,7 @@ type VehicleColumns struct {
 
 // vehicleColumns holds the columns for the table xf_vehicle.
 var vehicleColumns = VehicleColumns{
-	Id:                  "id",
+	VehicleUuid:         "vehicle_uuid",
 	PlateNumber:         "plate_number",
 	Model:               "model",
 	PurchaseDate:        "purchase_date",

@@ -11,12 +11,12 @@ import (
 
 // MaintenanceItem is the golang structure of table xf_maintenance_item for DAO operations like Where/Data.
 type MaintenanceItem struct {
-	g.Meta          `orm:"table:xf_maintenance_item, do:true"`
-	Id              interface{} // 项目ID
-	MaintenanceId   interface{} // 维修记录ID
-	ItemName        interface{} // 项目名称
-	ItemCost        interface{} // 项目费用
-	ItemDescription interface{} // 项目描述
-	CreatedAt       *gtime.Time // 创建时间
-	UpdatedAt       *gtime.Time // 更新时间
+	g.Meta              `orm:"table:xf_maintenance_item, do:true"`
+	MaintenanceItemUuid interface{} // 项目UUID
+	MaintenanceUuid     interface{} // 维修记录UUID
+	ItemName            interface{} // 项目名称
+	ItemCost            interface{} // 项目费用
+	ItemDescription     interface{} // 项目描述
+	CreatedAt           *gtime.Time // 创建时间
+	UpdatedAt           *gtime.Time // 更新时间
 }

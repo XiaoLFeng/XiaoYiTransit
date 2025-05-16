@@ -12,8 +12,8 @@ import (
 // DriverQualification is the golang structure of table xf_driver_qualification for DAO operations like Where/Data.
 type DriverQualification struct {
 	g.Meta              `orm:"table:xf_driver_qualification, do:true"`
-	Id                  interface{} // ID
-	DriverId            interface{} // 司机ID
+	QualificationUuid   interface{} // 资质UUID
+	DriverUuid          interface{} // 司机UUID
 	QualificationType   interface{} // 资质类型
 	QualificationNumber interface{} // 资质编号
 	IssueDate           *gtime.Time // 发证日期

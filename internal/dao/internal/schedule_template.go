@@ -21,32 +21,32 @@ type ScheduleTemplateDao struct {
 
 // ScheduleTemplateColumns defines and stores column names for the table xf_schedule_template.
 type ScheduleTemplateColumns struct {
-	Id           string // 模板ID
-	Name         string // 模板名称
-	RouteId      string // 线路ID
-	DayOfWeek    string // 星期几: 1-7 代表周一至周日
-	StartTime    string // 开始时间
-	EndTime      string // 结束时间
-	VehicleCount string // 所需车辆数
-	Status       string // 状态: 0-禁用, 1-启用
-	Notes        string // 备注
-	CreatedAt    string // 创建时间
-	UpdatedAt    string // 更新时间
+	ScheduleTemplateUuid string // 模板UUID
+	Name                 string // 模板名称
+	RouteUuid            string // 线路UUID
+	DayOfWeek            string // 星期几: 1-7 代表周一至周日
+	StartTime            string // 开始时间
+	EndTime              string // 结束时间
+	VehicleCount         string // 所需车辆数
+	Status               string // 状态: 0-禁用, 1-启用
+	Notes                string // 备注
+	CreatedAt            string // 创建时间
+	UpdatedAt            string // 更新时间
 }
 
 // scheduleTemplateColumns holds the columns for the table xf_schedule_template.
 var scheduleTemplateColumns = ScheduleTemplateColumns{
-	Id:           "id",
-	Name:         "name",
-	RouteId:      "route_id",
-	DayOfWeek:    "day_of_week",
-	StartTime:    "start_time",
-	EndTime:      "end_time",
-	VehicleCount: "vehicle_count",
-	Status:       "status",
-	Notes:        "notes",
-	CreatedAt:    "created_at",
-	UpdatedAt:    "updated_at",
+	ScheduleTemplateUuid: "schedule_template_uuid",
+	Name:                 "name",
+	RouteUuid:            "route_uuid",
+	DayOfWeek:            "day_of_week",
+	StartTime:            "start_time",
+	EndTime:              "end_time",
+	VehicleCount:         "vehicle_count",
+	Status:               "status",
+	Notes:                "notes",
+	CreatedAt:            "created_at",
+	UpdatedAt:            "updated_at",
 }
 
 // NewScheduleTemplateDao creates and returns a new DAO object for table data access.

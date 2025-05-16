@@ -10,7 +10,7 @@ import (
 
 // Driver is the golang structure for table driver.
 type Driver struct {
-	Id                int         `json:"id"                  orm:"id"                  description:"司机ID"`                       // 司机ID
+	DriverUuid        string      `json:"driver_uuid"         orm:"driver_uuid"         description:"司机UUID"`                     // 司机UUID
 	EmployeeId        string      `json:"employee_id"         orm:"employee_id"         description:"工号"`                         // 工号
 	Name              string      `json:"name"                orm:"name"                description:"姓名"`                         // 姓名
 	Gender            int         `json:"gender"              orm:"gender"              description:"性别: 1-男, 2-女"`               // 性别: 1-男, 2-女

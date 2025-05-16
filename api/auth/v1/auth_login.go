@@ -3,7 +3,7 @@ package v1
 import (
 	"github.com/XiaoLFeng/bamboo-utils/bmodels"
 	"github.com/gogf/gf/v2/frame/g"
-	"xiao-yi-transit/internal/model/dto"
+	"xiao-yi-transit/internal/model/dto/back"
 )
 
 type AuthLoginReq struct {
@@ -14,5 +14,5 @@ type AuthLoginReq struct {
 
 type AuthLoginRes struct {
 	g.Meta `mime:"application/json;charset=utf-8"`
-	*bmodels.ResponseDTO[*dto.UserInfo]
+	*bmodels.ResponseDTO[*back.AuthLoginBackDTO]
 }

@@ -21,10 +21,10 @@ type ScheduleDao struct {
 
 // ScheduleColumns defines and stores column names for the table xf_schedule.
 type ScheduleColumns struct {
-	Id              string // 调度ID
-	RouteId         string // 线路ID
-	VehicleId       string // 车辆ID
-	DriverId        string // 司机ID
+	ScheduleUuid    string // 调度UUID
+	RouteUuid       string // 线路UUID
+	VehicleUuid     string // 车辆UUID
+	DriverUuid      string // 司机UUID
 	ScheduleDate    string // 调度日期
 	StartTime       string // 开始时间
 	EndTime         string // 结束时间
@@ -35,7 +35,7 @@ type ScheduleColumns struct {
 	FuelConsumption string // 油耗(L)
 	PassengerCount  string // 载客人数
 	Notes           string // 备注
-	CreatedBy       string // 创建人ID
+	CreatedByUuid   string // 创建人UUID
 	CreatedAt       string // 创建时间
 	UpdatedAt       string // 更新时间
 	DeletedAt       string // 删除时间
@@ -43,10 +43,10 @@ type ScheduleColumns struct {
 
 // scheduleColumns holds the columns for the table xf_schedule.
 var scheduleColumns = ScheduleColumns{
-	Id:              "id",
-	RouteId:         "route_id",
-	VehicleId:       "vehicle_id",
-	DriverId:        "driver_id",
+	ScheduleUuid:    "schedule_uuid",
+	RouteUuid:       "route_uuid",
+	VehicleUuid:     "vehicle_uuid",
+	DriverUuid:      "driver_uuid",
 	ScheduleDate:    "schedule_date",
 	StartTime:       "start_time",
 	EndTime:         "end_time",
@@ -57,7 +57,7 @@ var scheduleColumns = ScheduleColumns{
 	FuelConsumption: "fuel_consumption",
 	PassengerCount:  "passenger_count",
 	Notes:           "notes",
-	CreatedBy:       "created_by",
+	CreatedByUuid:   "created_by_uuid",
 	CreatedAt:       "created_at",
 	UpdatedAt:       "updated_at",
 	DeletedAt:       "deleted_at",

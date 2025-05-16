@@ -10,7 +10,7 @@ import (
 
 // Vehicle is the golang structure for table vehicle.
 type Vehicle struct {
-	Id                  string      `json:"id"                    orm:"id"                    description:"车辆ID"`                       // 车辆ID
+	VehicleUuid         string      `json:"vehicle_uuid"          orm:"vehicle_uuid"          description:"车辆UUID"`                     // 车辆UUID
 	PlateNumber         string      `json:"plate_number"          orm:"plate_number"          description:"车牌号"`                        // 车牌号
 	Model               string      `json:"model"                 orm:"model"                 description:"车辆型号"`                       // 车辆型号
 	PurchaseDate        *gtime.Time `json:"purchase_date"         orm:"purchase_date"         description:"购买日期"`                       // 购买日期

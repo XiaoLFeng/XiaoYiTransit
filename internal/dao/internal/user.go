@@ -21,7 +21,7 @@ type UserDao struct {
 
 // UserColumns defines and stores column names for the table xf_user.
 type UserColumns struct {
-	Id            string // 用户ID
+	UserUuid      string // 用户ID
 	Username      string // 用户名
 	Password      string // 密码
 	RealName      string // 真实姓名
@@ -38,7 +38,7 @@ type UserColumns struct {
 
 // userColumns holds the columns for the table xf_user.
 var userColumns = UserColumns{
-	Id:            "id",
+	UserUuid:      "user_uuid",
 	Username:      "username",
 	Password:      "password",
 	RealName:      "real_name",

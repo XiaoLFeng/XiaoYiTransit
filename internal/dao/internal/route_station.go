@@ -21,9 +21,9 @@ type RouteStationDao struct {
 
 // RouteStationColumns defines and stores column names for the table xf_route_station.
 type RouteStationColumns struct {
-	Id                string // ID
-	RouteId           string // 线路ID
-	StationId         string // 站点ID
+	RouteStationUuid  string // 线路站点UUID
+	RouteUuid         string // 线路UUID
+	StationUuid       string // 站点UUID
 	Sequence          string // 站点顺序
 	DistanceFromStart string // 距起点距离(km)
 	EstimatedTime     string // 预计到达时间(分钟)
@@ -33,9 +33,9 @@ type RouteStationColumns struct {
 
 // routeStationColumns holds the columns for the table xf_route_station.
 var routeStationColumns = RouteStationColumns{
-	Id:                "id",
-	RouteId:           "route_id",
-	StationId:         "station_id",
+	RouteStationUuid:  "route_station_uuid",
+	RouteUuid:         "route_uuid",
+	StationUuid:       "station_uuid",
 	Sequence:          "sequence",
 	DistanceFromStart: "distance_from_start",
 	EstimatedTime:     "estimated_time",

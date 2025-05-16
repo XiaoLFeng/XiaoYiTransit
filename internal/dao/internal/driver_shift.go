@@ -21,30 +21,30 @@ type DriverShiftDao struct {
 
 // DriverShiftColumns defines and stores column names for the table xf_driver_shift.
 type DriverShiftColumns struct {
-	Id        string // ID
-	DriverId  string // 司机ID
-	ShiftDate string // 排班日期
-	ShiftType string // 班次类型: 1-早班, 2-中班, 3-晚班, 4-全天班
-	StartTime string // 开始时间
-	EndTime   string // 结束时间
-	Status    string // 状态: 0-取消, 1-待执行, 2-执行中, 3-已完成
-	Notes     string // 备注
-	CreatedAt string // 创建时间
-	UpdatedAt string // 更新时间
+	ShiftUuid  string // 排班UUID
+	DriverUuid string // 司机UUID
+	ShiftDate  string // 排班日期
+	ShiftType  string // 班次类型: 1-早班, 2-中班, 3-晚班, 4-全天班
+	StartTime  string // 开始时间
+	EndTime    string // 结束时间
+	Status     string // 状态: 0-取消, 1-待执行, 2-执行中, 3-已完成
+	Notes      string // 备注
+	CreatedAt  string // 创建时间
+	UpdatedAt  string // 更新时间
 }
 
 // driverShiftColumns holds the columns for the table xf_driver_shift.
 var driverShiftColumns = DriverShiftColumns{
-	Id:        "id",
-	DriverId:  "driver_id",
-	ShiftDate: "shift_date",
-	ShiftType: "shift_type",
-	StartTime: "start_time",
-	EndTime:   "end_time",
-	Status:    "status",
-	Notes:     "notes",
-	CreatedAt: "created_at",
-	UpdatedAt: "updated_at",
+	ShiftUuid:  "shift_uuid",
+	DriverUuid: "driver_uuid",
+	ShiftDate:  "shift_date",
+	ShiftType:  "shift_type",
+	StartTime:  "start_time",
+	EndTime:    "end_time",
+	Status:     "status",
+	Notes:      "notes",
+	CreatedAt:  "created_at",
+	UpdatedAt:  "updated_at",
 }
 
 // NewDriverShiftDao creates and returns a new DAO object for table data access.

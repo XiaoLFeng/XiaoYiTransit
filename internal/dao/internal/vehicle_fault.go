@@ -21,16 +21,16 @@ type VehicleFaultDao struct {
 
 // VehicleFaultColumns defines and stores column names for the table xf_vehicle_fault.
 type VehicleFaultColumns struct {
-	Id               string // 故障ID
-	VehicleId        string // 车辆ID
-	ReporterId       string // 报告人ID
+	VehicleFaultUuid string // 故障UUID
+	VehicleUuid      string // 车辆UUID
+	UserUuid         string // 报告人UUID
 	FaultType        string // 故障类型
 	FaultDescription string // 故障描述
 	ReportDate       string // 报告时间
 	FaultLocation    string // 故障发生地点
 	Severity         string // 严重程度: 1-轻微, 2-一般, 3-严重, 4-危险
 	Status           string // 状态: 0-已取消, 1-待处理, 2-处理中, 3-已解决
-	MaintenanceId    string // 关联的维修记录ID
+	MaintenanceUuid  string // 关联的维修记录UUID
 	Notes            string // 备注
 	CreatedAt        string // 创建时间
 	UpdatedAt        string // 更新时间
@@ -38,16 +38,16 @@ type VehicleFaultColumns struct {
 
 // vehicleFaultColumns holds the columns for the table xf_vehicle_fault.
 var vehicleFaultColumns = VehicleFaultColumns{
-	Id:               "id",
-	VehicleId:        "vehicle_id",
-	ReporterId:       "reporter_id",
+	VehicleFaultUuid: "vehicle_fault_uuid",
+	VehicleUuid:      "vehicle_uuid",
+	UserUuid:         "user_uuid",
 	FaultType:        "fault_type",
 	FaultDescription: "fault_description",
 	ReportDate:       "report_date",
 	FaultLocation:    "fault_location",
 	Severity:         "severity",
 	Status:           "status",
-	MaintenanceId:    "maintenance_id",
+	MaintenanceUuid:  "maintenance_uuid",
 	Notes:            "notes",
 	CreatedAt:        "created_at",
 	UpdatedAt:        "updated_at",

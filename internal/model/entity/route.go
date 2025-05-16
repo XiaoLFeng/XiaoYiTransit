@@ -11,7 +11,7 @@ import (
 
 // Route is the golang structure for table route.
 type Route struct {
-	Id             int         `json:"id"              orm:"id"              description:"线路ID"`           // 线路ID
+	RouteUuid      string      `json:"route_uuid"      orm:"route_uuid"      description:"线路UUID"`         // 线路UUID
 	RouteNumber    string      `json:"route_number"    orm:"route_number"    description:"线路编号"`           // 线路编号
 	Name           string      `json:"name"            orm:"name"            description:"线路名称"`           // 线路名称
 	StartStation   string      `json:"start_station"   orm:"start_station"   description:"起始站点"`           // 起始站点

@@ -12,9 +12,9 @@ import (
 // RouteStation is the golang structure of table xf_route_station for DAO operations like Where/Data.
 type RouteStation struct {
 	g.Meta            `orm:"table:xf_route_station, do:true"`
-	Id                interface{} // ID
-	RouteId           interface{} // 线路ID
-	StationId         interface{} // 站点ID
+	RouteStationUuid  interface{} // 线路站点UUID
+	RouteUuid         interface{} // 线路UUID
+	StationUuid       interface{} // 站点UUID
 	Sequence          interface{} // 站点顺序
 	DistanceFromStart interface{} // 距起点距离(km)
 	EstimatedTime     interface{} // 预计到达时间(分钟)

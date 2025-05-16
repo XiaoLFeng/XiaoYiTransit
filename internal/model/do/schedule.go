@@ -12,10 +12,10 @@ import (
 // Schedule is the golang structure of table xf_schedule for DAO operations like Where/Data.
 type Schedule struct {
 	g.Meta          `orm:"table:xf_schedule, do:true"`
-	Id              interface{} // 调度ID
-	RouteId         interface{} // 线路ID
-	VehicleId       interface{} // 车辆ID
-	DriverId        interface{} // 司机ID
+	ScheduleUuid    interface{} // 调度UUID
+	RouteUuid       interface{} // 线路UUID
+	VehicleUuid     interface{} // 车辆UUID
+	DriverUuid      interface{} // 司机UUID
 	ScheduleDate    *gtime.Time // 调度日期
 	StartTime       *gtime.Time // 开始时间
 	EndTime         *gtime.Time // 结束时间
@@ -26,7 +26,7 @@ type Schedule struct {
 	FuelConsumption interface{} // 油耗(L)
 	PassengerCount  interface{} // 载客人数
 	Notes           interface{} // 备注
-	CreatedBy       interface{} // 创建人ID
+	CreatedByUuid   interface{} // 创建人UUID
 	CreatedAt       *gtime.Time // 创建时间
 	UpdatedAt       *gtime.Time // 更新时间
 	DeletedAt       *gtime.Time // 删除时间

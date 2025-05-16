@@ -21,8 +21,8 @@ type DriverQualificationDao struct {
 
 // DriverQualificationColumns defines and stores column names for the table xf_driver_qualification.
 type DriverQualificationColumns struct {
-	Id                  string // ID
-	DriverId            string // 司机ID
+	QualificationUuid   string // 资质UUID
+	DriverUuid          string // 司机UUID
 	QualificationType   string // 资质类型
 	QualificationNumber string // 资质编号
 	IssueDate           string // 发证日期
@@ -35,8 +35,8 @@ type DriverQualificationColumns struct {
 
 // driverQualificationColumns holds the columns for the table xf_driver_qualification.
 var driverQualificationColumns = DriverQualificationColumns{
-	Id:                  "id",
-	DriverId:            "driver_id",
+	QualificationUuid:   "qualification_uuid",
+	DriverUuid:          "driver_uuid",
 	QualificationType:   "qualification_type",
 	QualificationNumber: "qualification_number",
 	IssueDate:           "issue_date",

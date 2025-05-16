@@ -12,7 +12,7 @@ import (
 // User is the golang structure of table xf_user for DAO operations like Where/Data.
 type User struct {
 	g.Meta        `orm:"table:xf_user, do:true"`
-	Id            interface{} // 用户ID
+	UserUuid      interface{} // 用户ID
 	Username      interface{} // 用户名
 	Password      interface{} // 密码
 	RealName      interface{} // 真实姓名

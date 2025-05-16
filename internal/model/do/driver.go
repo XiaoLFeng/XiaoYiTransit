@@ -12,7 +12,7 @@ import (
 // Driver is the golang structure of table xf_driver for DAO operations like Where/Data.
 type Driver struct {
 	g.Meta            `orm:"table:xf_driver, do:true"`
-	Id                interface{} // 司机ID
+	DriverUuid        interface{} // 司机UUID
 	EmployeeId        interface{} // 工号
 	Name              interface{} // 姓名
 	Gender            interface{} // 性别: 1-男, 2-女

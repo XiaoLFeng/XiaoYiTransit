@@ -13,7 +13,7 @@ import (
 // Route is the golang structure of table xf_route for DAO operations like Where/Data.
 type Route struct {
 	g.Meta         `orm:"table:xf_route, do:true"`
-	Id             interface{} // 线路ID
+	RouteUuid      interface{} // 线路UUID
 	RouteNumber    interface{} // 线路编号
 	Name           interface{} // 线路名称
 	StartStation   interface{} // 起始站点

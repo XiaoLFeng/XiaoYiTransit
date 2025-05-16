@@ -21,8 +21,8 @@ type MaintenanceDao struct {
 
 // MaintenanceColumns defines and stores column names for the table xf_maintenance.
 type MaintenanceColumns struct {
-	Id                  string // 维修ID
-	VehicleId           string // 车辆ID
+	MaintenanceUuid     string // 维修UUID
+	VehicleUuid         string // 车辆UUID
 	MaintenanceType     string // 维修类型: 1-常规保养, 2-故障维修, 3-事故维修, 4-年检维修
 	Description         string // 维修描述
 	MaintenanceDate     string // 维修日期
@@ -34,7 +34,7 @@ type MaintenanceColumns struct {
 	PartsReplaced       string // 更换的零部件
 	Status              string // 状态: 0-已取消, 1-待维修, 2-维修中, 3-已完成
 	Notes               string // 备注
-	CreatedBy           string // 创建人ID
+	CreatedByUuid       string // 创建人UUID
 	CreatedAt           string // 创建时间
 	UpdatedAt           string // 更新时间
 	DeletedAt           string // 删除时间
@@ -42,8 +42,8 @@ type MaintenanceColumns struct {
 
 // maintenanceColumns holds the columns for the table xf_maintenance.
 var maintenanceColumns = MaintenanceColumns{
-	Id:                  "id",
-	VehicleId:           "vehicle_id",
+	MaintenanceUuid:     "maintenance_uuid",
+	VehicleUuid:         "vehicle_uuid",
 	MaintenanceType:     "maintenance_type",
 	Description:         "description",
 	MaintenanceDate:     "maintenance_date",
@@ -55,7 +55,7 @@ var maintenanceColumns = MaintenanceColumns{
 	PartsReplaced:       "parts_replaced",
 	Status:              "status",
 	Notes:               "notes",
-	CreatedBy:           "created_by",
+	CreatedByUuid:       "created_by_uuid",
 	CreatedAt:           "created_at",
 	UpdatedAt:           "updated_at",
 	DeletedAt:           "deleted_at",

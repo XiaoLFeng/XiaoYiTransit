@@ -21,24 +21,24 @@ type MaintenanceItemDao struct {
 
 // MaintenanceItemColumns defines and stores column names for the table xf_maintenance_item.
 type MaintenanceItemColumns struct {
-	Id              string // 项目ID
-	MaintenanceId   string // 维修记录ID
-	ItemName        string // 项目名称
-	ItemCost        string // 项目费用
-	ItemDescription string // 项目描述
-	CreatedAt       string // 创建时间
-	UpdatedAt       string // 更新时间
+	MaintenanceItemUuid string // 项目UUID
+	MaintenanceUuid     string // 维修记录UUID
+	ItemName            string // 项目名称
+	ItemCost            string // 项目费用
+	ItemDescription     string // 项目描述
+	CreatedAt           string // 创建时间
+	UpdatedAt           string // 更新时间
 }
 
 // maintenanceItemColumns holds the columns for the table xf_maintenance_item.
 var maintenanceItemColumns = MaintenanceItemColumns{
-	Id:              "id",
-	MaintenanceId:   "maintenance_id",
-	ItemName:        "item_name",
-	ItemCost:        "item_cost",
-	ItemDescription: "item_description",
-	CreatedAt:       "created_at",
-	UpdatedAt:       "updated_at",
+	MaintenanceItemUuid: "maintenance_item_uuid",
+	MaintenanceUuid:     "maintenance_uuid",
+	ItemName:            "item_name",
+	ItemCost:            "item_cost",
+	ItemDescription:     "item_description",
+	CreatedAt:           "created_at",
+	UpdatedAt:           "updated_at",
 }
 
 // NewMaintenanceItemDao creates and returns a new DAO object for table data access.

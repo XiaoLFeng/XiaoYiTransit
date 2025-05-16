@@ -10,7 +10,7 @@ import (
 
 // Role is the golang structure for table role.
 type Role struct {
-	Id          string      `json:"id"          orm:"id"          description:"角色ID"`           // 角色ID
+	RoleUuid    string      `json:"role_uuid"   orm:"role_uuid"   description:"角色UUID"`         // 角色UUID
 	Name        string      `json:"name"        orm:"name"        description:"角色名称"`           // 角色名称
 	Code        string      `json:"code"        orm:"code"        description:"角色编码"`           // 角色编码
 	Description string      `json:"description" orm:"description" description:"角色描述"`           // 角色描述

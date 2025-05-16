@@ -21,7 +21,7 @@ type DriverDao struct {
 
 // DriverColumns defines and stores column names for the table xf_driver.
 type DriverColumns struct {
-	Id                string // 司机ID
+	DriverUuid        string // 司机UUID
 	EmployeeId        string // 工号
 	Name              string // 姓名
 	Gender            string // 性别: 1-男, 2-女
@@ -43,7 +43,7 @@ type DriverColumns struct {
 
 // driverColumns holds the columns for the table xf_driver.
 var driverColumns = DriverColumns{
-	Id:                "id",
+	DriverUuid:        "driver_uuid",
 	EmployeeId:        "employee_id",
 	Name:              "name",
 	Gender:            "gender",

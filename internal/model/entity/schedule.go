@@ -10,10 +10,10 @@ import (
 
 // Schedule is the golang structure for table schedule.
 type Schedule struct {
-	Id              int         `json:"id"                orm:"id"                description:"调度ID"`                          // 调度ID
-	RouteId         int         `json:"route_id"          orm:"route_id"          description:"线路ID"`                          // 线路ID
-	VehicleId       int         `json:"vehicle_id"        orm:"vehicle_id"        description:"车辆ID"`                          // 车辆ID
-	DriverId        int         `json:"driver_id"         orm:"driver_id"         description:"司机ID"`                          // 司机ID
+	ScheduleUuid    string      `json:"schedule_uuid"     orm:"schedule_uuid"     description:"调度UUID"`                        // 调度UUID
+	RouteUuid       string      `json:"route_uuid"        orm:"route_uuid"        description:"线路UUID"`                        // 线路UUID
+	VehicleUuid     string      `json:"vehicle_uuid"      orm:"vehicle_uuid"      description:"车辆UUID"`                        // 车辆UUID
+	DriverUuid      string      `json:"driver_uuid"       orm:"driver_uuid"       description:"司机UUID"`                        // 司机UUID
 	ScheduleDate    *gtime.Time `json:"schedule_date"     orm:"schedule_date"     description:"调度日期"`                          // 调度日期
 	StartTime       *gtime.Time `json:"start_time"        orm:"start_time"        description:"开始时间"`                          // 开始时间
 	EndTime         *gtime.Time `json:"end_time"          orm:"end_time"          description:"结束时间"`                          // 结束时间
@@ -24,7 +24,7 @@ type Schedule struct {
 	FuelConsumption float64     `json:"fuel_consumption"  orm:"fuel_consumption"  description:"油耗(L)"`                         // 油耗(L)
 	PassengerCount  int         `json:"passenger_count"   orm:"passenger_count"   description:"载客人数"`                          // 载客人数
 	Notes           string      `json:"notes"             orm:"notes"             description:"备注"`                            // 备注
-	CreatedBy       int         `json:"created_by"        orm:"created_by"        description:"创建人ID"`                         // 创建人ID
+	CreatedByUuid   string      `json:"created_by_uuid"   orm:"created_by_uuid"   description:"创建人UUID"`                       // 创建人UUID
 	CreatedAt       *gtime.Time `json:"created_at"        orm:"created_at"        description:"创建时间"`                          // 创建时间
 	UpdatedAt       *gtime.Time `json:"updated_at"        orm:"updated_at"        description:"更新时间"`                          // 更新时间
 	DeletedAt       *gtime.Time `json:"deleted_at"        orm:"deleted_at"        description:"删除时间"`                          // 删除时间

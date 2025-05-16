@@ -7,12 +7,12 @@ import (
 
 var databaseList = []string{
 	"xf_role.sql",                 // 角色表
-	"xf_permission.sql",           // 权限表
 	"xf_station.sql",              // 站点表
 	"xf_vehicle.sql",              // 车辆表
 	"xf_driver.sql",               // 司机表
 	"xf_route.sql",                // 线路表
 	"xf_user.sql",                 // 用户表（依赖角色表）
+	"xf_user_token.sql",           // token表
 	"xf_driver_qualification.sql", // 司机资质表（依赖司机表）
 	"xf_driver_shift.sql",         // 司机班次表（依赖司机表）
 	"xf_route_station.sql",        // 线路站点关联表（依赖线路表和站点表）

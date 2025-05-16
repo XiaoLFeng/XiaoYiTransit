@@ -12,7 +12,7 @@ import (
 // Vehicle is the golang structure of table xf_vehicle for DAO operations like Where/Data.
 type Vehicle struct {
 	g.Meta              `orm:"table:xf_vehicle, do:true"`
-	Id                  interface{} // 车辆ID
+	VehicleUuid         interface{} // 车辆UUID
 	PlateNumber         interface{} // 车牌号
 	Model               interface{} // 车辆型号
 	PurchaseDate        *gtime.Time // 购买日期

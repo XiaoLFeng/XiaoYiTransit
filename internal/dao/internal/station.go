@@ -21,30 +21,30 @@ type StationDao struct {
 
 // StationColumns defines and stores column names for the table xf_station.
 type StationColumns struct {
-	Id        string // 站点ID
-	Name      string // 站点名称
-	Code      string // 站点编码
-	Address   string // 站点地址
-	Longitude string // 经度
-	Latitude  string // 纬度
-	Status    string // 状态: 0-停用, 1-启用
-	CreatedAt string // 创建时间
-	UpdatedAt string // 更新时间
-	DeletedAt string // 删除时间
+	StationUuid string // 站点UUID
+	Name        string // 站点名称
+	Code        string // 站点编码
+	Address     string // 站点地址
+	Longitude   string // 经度
+	Latitude    string // 纬度
+	Status      string // 状态: 0-停用, 1-启用
+	CreatedAt   string // 创建时间
+	UpdatedAt   string // 更新时间
+	DeletedAt   string // 删除时间
 }
 
 // stationColumns holds the columns for the table xf_station.
 var stationColumns = StationColumns{
-	Id:        "id",
-	Name:      "name",
-	Code:      "code",
-	Address:   "address",
-	Longitude: "longitude",
-	Latitude:  "latitude",
-	Status:    "status",
-	CreatedAt: "created_at",
-	UpdatedAt: "updated_at",
-	DeletedAt: "deleted_at",
+	StationUuid: "station_uuid",
+	Name:        "name",
+	Code:        "code",
+	Address:     "address",
+	Longitude:   "longitude",
+	Latitude:    "latitude",
+	Status:      "status",
+	CreatedAt:   "created_at",
+	UpdatedAt:   "updated_at",
+	DeletedAt:   "deleted_at",
 }
 
 // NewStationDao creates and returns a new DAO object for table data access.
