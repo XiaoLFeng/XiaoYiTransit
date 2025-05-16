@@ -28,7 +28,7 @@ type UserColumns struct {
 	Email         string // 邮箱
 	Phone         string // 手机号
 	Avatar        string // 头像
-	RoleId        string // 角色ID
+	RoleUuid      string // 角色ID
 	Status        string // 状态: 0-禁用, 1-启用
 	LastLoginTime string // 最后登录时间
 	CreatedAt     string // 创建时间
@@ -45,7 +45,7 @@ var userColumns = UserColumns{
 	Email:         "email",
 	Phone:         "phone",
 	Avatar:        "avatar",
-	RoleId:        "role_id",
+	RoleUuid:      "role_uuid",
 	Status:        "status",
 	LastLoginTime: "last_login_time",
 	CreatedAt:     "created_at",

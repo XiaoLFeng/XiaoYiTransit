@@ -19,7 +19,7 @@ type User struct {
 	Email         interface{} // 邮箱
 	Phone         interface{} // 手机号
 	Avatar        interface{} // 头像
-	RoleId        interface{} // 角色ID
+	RoleUuid      interface{} // 角色ID
 	Status        interface{} // 状态: 0-禁用, 1-启用
 	LastLoginTime *gtime.Time // 最后登录时间
 	CreatedAt     *gtime.Time // 创建时间

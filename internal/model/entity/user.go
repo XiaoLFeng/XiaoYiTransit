@@ -17,7 +17,7 @@ type User struct {
 	Email         string      `json:"email"           orm:"email"           description:"邮箱"`             // 邮箱
 	Phone         string      `json:"phone"           orm:"phone"           description:"手机号"`            // 手机号
 	Avatar        string      `json:"avatar"          orm:"avatar"          description:"头像"`             // 头像
-	RoleId        string      `json:"role_id"         orm:"role_id"         description:"角色ID"`           // 角色ID
+	RoleUuid      string      `json:"role_uuid"       orm:"role_uuid"       description:"角色ID"`           // 角色ID
 	Status        int         `json:"status"          orm:"status"          description:"状态: 0-禁用, 1-启用"` // 状态: 0-禁用, 1-启用
 	LastLoginTime *gtime.Time `json:"last_login_time" orm:"last_login_time" description:"最后登录时间"`         // 最后登录时间
 	CreatedAt     *gtime.Time `json:"created_at"      orm:"created_at"      description:"创建时间"`           // 创建时间

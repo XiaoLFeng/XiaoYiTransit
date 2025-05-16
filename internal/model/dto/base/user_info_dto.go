@@ -10,6 +10,6 @@ type UserInfoDTO struct {
 	Email    string `json:"email"           orm:"email"           description:"邮箱"`
 	Phone    string `json:"phone"           orm:"phone"           description:"手机号"`
 	Avatar   string `json:"avatar"          orm:"avatar"          description:"头像"`
-	RoleId   string `json:"role_id"         orm:"role_id"         description:"角色ID"`
+	RoleUuid string `json:"role_uuid"         orm:"role_id"         description:"角色ID"`
 	Status   int    `json:"status"          orm:"status"          description:"状态: 0-禁用, 1-启用"`
 }
