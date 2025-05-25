@@ -1,14 +1,12 @@
-package v1
+package driver
 
 import (
-	"github.com/XiaoLFeng/bamboo-utils/bmodels"
-	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/os/gtime"
 )
 
-// CreateDriverReq defines the request for creating a new driver
-type CreateDriverReq struct {
-	g.Meta            `path:"/driver/create" method:"Post" tags:"司机管理" sm:"创建司机" dc:"用于创建新的司机信息"`
+// UpdateDriverReqDTO defines the request for updating a driver
+type UpdateDriverReqDTO struct {
+	DriverUuid        string      `json:"driver_uuid" v:"required#司机UUID不能为空" dc:"司机UUID"`
 	EmployeeId        string      `json:"employee_id" v:"required#工号不能为空" dc:"工号"`
 	Name              string      `json:"name" v:"required#姓名不能为空" dc:"姓名"`
 	Gender            int         `json:"gender" v:"required|in:1,2#性别不能为空|性别只能是1(男)或2(女)" dc:"性别: 1-男, 2-女"`
@@ -23,10 +21,4 @@ type CreateDriverReq struct {
 	Status            int         `json:"status" v:"required|in:0,1,2,3#状态不能为空|状态只能是0(离职),1(在职),2(休假),3(停职)" dc:"状态: 0-离职, 1-在职, 2-休假, 3-停职"`
 	Address           string      `json:"address" dc:"住址"`
 	Notes             string      `json:"notes" dc:"备注"`
-}
-
-// CreateDriverRes defines the response for creating a new driver
-type CreateDriverRes struct {
-	g.Meta                       `mime:"application/json;charset=utf-8"`
-	*bmodels.ResponseDTO[string] // Return the driver UUID
 }

@@ -7,6 +7,7 @@ import (
 	"github.com/XiaoLFeng/bamboo-utils/bresult"
 	"github.com/gogf/gf/v2/util/gconv"
 	"xiao-yi-transit/api/driver/v1"
+	"xiao-yi-transit/internal/model/dto/driver"
 	"xiao-yi-transit/internal/service"
 )
 
@@ -26,15 +27,15 @@ func (c *ControllerV1) GetDriverSchedule(ctx context.Context, req *v1.GetDriverS
 
 	// 调用服务获取司机排班
 	iDriver := service.Driver()
-	driver, shifts, errorCode := iDriver.GetDriverSchedule(ctx, req.DriverUuid, req.StartDate, req.EndDate)
+	driverEntity, shifts, errorCode := iDriver.GetDriverSchedule(ctx, req.DriverUuid, req.StartDate, req.EndDate)
 	if errorCode != nil {
 		return nil, errorCode
 	}
 
 	// 转换数据
-	var shiftItems []*v1.DriverShiftItem
+	var shiftItems []*driver.DriverShiftItemDTO
 	for _, shift := range shifts {
-		var item v1.DriverShiftItem
+		var item driver.DriverShiftItemDTO
 		if err := gconv.Struct(shift, &item); err != nil {
 			blog.ControllerError(ctx, "GetDriverSchedule", "数据转换失败: %s", err.Error())
 			return nil, &berror.ErrInternalServer
@@ -43,9 +44,9 @@ func (c *ControllerV1) GetDriverSchedule(ctx context.Context, req *v1.GetDriverS
 	}
 
 	// 构建返回数据
-	schedule := &v1.DriverSchedule{
-		DriverUuid: driver.DriverUuid,
-		DriverName: driver.Name,
+	schedule := &driver.DriverScheduleDTO{
+		DriverUuid: driverEntity.DriverUuid,
+		DriverName: driverEntity.Name,
 		StartDate:  req.StartDate,
 		EndDate:    req.EndDate,
 		Shifts:     shiftItems,

@@ -25,7 +25,15 @@ type (
 		//   - 创建成功的司机UUID。
 		//   - 错误码的指针，表示可能的错误类型。
 		CreateDriver(ctx context.Context, driver *entity.Driver) (string, *berror.ErrorCode)
-
+		// DeleteDriver 删除司机信息。
+		//
+		// 参数:
+		//   - ctx: 上下文信息，用于控制请求生命周期。
+		//   - driverUuid: 司机的唯一标识符。
+		//
+		// 返回:
+		//   - 错误码的指针，表示可能的错误类型。
+		DeleteDriver(ctx context.Context, driverUuid string) *berror.ErrorCode
 		// GetDriverById 根据司机UUID获取司机信息。
 		//
 		// 参数:
@@ -36,7 +44,6 @@ type (
 		//   - 司机信息的指针，包含详细司机数据。
 		//   - 错误码的指针，表示错误类型，如司机不存在或内部错误。
 		GetDriverById(ctx context.Context, driverUuid string) (*entity.Driver, *berror.ErrorCode)
-
 		// GetDriverList 获取司机列表。
 		//
 		// 参数:
@@ -51,28 +58,7 @@ type (
 		//   - 司机列表。
 		//   - 总数量。
 		//   - 错误码的指针，表示可能的错误类型。
-		GetDriverList(ctx context.Context, page, size int, employeeId, name string, status int) ([]*entity.Driver, int, *berror.ErrorCode)
-
-		// UpdateDriver 更新司机信息。
-		//
-		// 参数:
-		//   - ctx: 上下文信息，用于控制请求生命周期。
-		//   - driver: 司机信息实体，包含需要更新的司机详细信息。
-		//
-		// 返回:
-		//   - 错误码的指针，表示可能的错误类型。
-		UpdateDriver(ctx context.Context, driver *entity.Driver) *berror.ErrorCode
-
-		// DeleteDriver 删除司机信息。
-		//
-		// 参数:
-		//   - ctx: 上下文信息，用于控制请求生命周期。
-		//   - driverUuid: 司机的唯一标识符。
-		//
-		// 返回:
-		//   - 错误码的指针，表示可能的错误类型。
-		DeleteDriver(ctx context.Context, driverUuid string) *berror.ErrorCode
-
+		GetDriverList(ctx context.Context, page int, size int, employeeId string, name string, status int) ([]*entity.Driver, int, *berror.ErrorCode)
 		// GetDriverSchedule 获取司机排班信息。
 		//
 		// 参数:
@@ -85,7 +71,16 @@ type (
 		//   - 司机信息。
 		//   - 排班列表。
 		//   - 错误码的指针，表示可能的错误类型。
-		GetDriverSchedule(ctx context.Context, driverUuid string, startDate, endDate *gtime.Time) (*entity.Driver, []*entity.DriverShift, *berror.ErrorCode)
+		GetDriverSchedule(ctx context.Context, driverUuid string, startDate *gtime.Time, endDate *gtime.Time) (*entity.Driver, []*entity.DriverShift, *berror.ErrorCode)
+		// UpdateDriver 更新司机信息。
+		//
+		// 参数:
+		//   - ctx: 上下文信息，用于控制请求生命周期。
+		//   - driver: 司机信息实体，包含需要更新的司机详细信息。
+		//
+		// 返回:
+		//   - 错误码的指针，表示可能的错误类型。
+		UpdateDriver(ctx context.Context, driver *entity.Driver) *berror.ErrorCode
 	}
 )
 

@@ -7,6 +7,7 @@ import (
 	"github.com/XiaoLFeng/bamboo-utils/bresult"
 	"github.com/gogf/gf/v2/util/gconv"
 	"xiao-yi-transit/api/driver/v1"
+	"xiao-yi-transit/internal/model/dto/driver"
 	"xiao-yi-transit/internal/service"
 )
 
@@ -32,10 +33,10 @@ func (c *ControllerV1) GetDriverList(ctx context.Context, req *v1.GetDriverListR
 	}
 
 	// 转换数据
-	var driverList []*v1.DriverListItem
-	for _, driver := range drivers {
-		var item v1.DriverListItem
-		if err := gconv.Struct(driver, &item); err != nil {
+	var driverList []*driver.DriverListItemDTO
+	for _, driverEntity := range drivers {
+		var item driver.DriverListItemDTO
+		if err := gconv.Struct(driverEntity, &item); err != nil {
 			blog.ControllerError(ctx, "GetDriverList", "数据转换失败: %s", err.Error())
 			return nil, &berror.ErrInternalServer
 		}
@@ -43,7 +44,7 @@ func (c *ControllerV1) GetDriverList(ctx context.Context, req *v1.GetDriverListR
 	}
 
 	// 构建返回数据
-	pagedList := &v1.PagedDriverList{
+	pagedList := &driver.PagedDriverListDTO{
 		List:  driverList,
 		Page:  req.Page,
 		Size:  req.Size,
@@ -72,14 +73,14 @@ func (c *ControllerV1) GetDriverDetail(ctx context.Context, req *v1.GetDriverDet
 
 	// 获取司机详情
 	iDriver := service.Driver()
-	driver, errorCode := iDriver.GetDriverById(ctx, req.DriverUuid)
+	driverEntity, errorCode := iDriver.GetDriverById(ctx, req.DriverUuid)
 	if errorCode != nil {
 		return nil, errorCode
 	}
 
 	// 转换数据
-	var driverDetail v1.DriverDetailItem
-	if err := gconv.Struct(driver, &driverDetail); err != nil {
+	var driverDetail driver.DriverDetailItemDTO
+	if err := gconv.Struct(driverEntity, &driverDetail); err != nil {
 		blog.ControllerError(ctx, "GetDriverDetail", "数据转换失败: %s", err.Error())
 		return nil, &berror.ErrInternalServer
 	}

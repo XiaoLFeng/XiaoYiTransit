@@ -5,6 +5,7 @@ import (
 	"github.com/XiaoLFeng/bamboo-utils/bhandler/bhook"
 	"github.com/XiaoLFeng/bamboo-utils/bhandler/bmiddle"
 	"xiao-yi-transit/internal/controller/auth"
+	"xiao-yi-transit/internal/controller/driver"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
@@ -33,6 +34,7 @@ var (
 				group.Middleware(ghttp.MiddlewareHandlerResponse)
 				group.Bind(
 					auth.NewV1(),
+					driver.NewV1(),
 				)
 			})
 

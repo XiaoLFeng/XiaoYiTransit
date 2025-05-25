@@ -6,6 +6,7 @@ package logic
 
 import (
 	_ "xiao-yi-transit/internal/logic/auth"
+	_ "xiao-yi-transit/internal/logic/driver"
 	_ "xiao-yi-transit/internal/logic/token"
 	_ "xiao-yi-transit/internal/logic/user"
 )
