@@ -11,5 +11,6 @@ import (
 )
 
 type IAuthV1 interface {
+	AuthForgetPassword(ctx context.Context, req *v1.AuthForgetPasswordReq) (res *v1.AuthForgetPasswordRes, err error)
 	AuthLogin(ctx context.Context, req *v1.AuthLoginReq) (res *v1.AuthLoginRes, err error)
 }

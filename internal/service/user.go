@@ -16,6 +16,8 @@ type (
 	IUser interface {
 		// GetUserById 根据用户ID获取用户信息。
 		//
+		// 若不产生报错，则 *entity.User 返回用户信息，用户必然存在
+		//
 		// 参数:
 		//   - ctx: 上下文信息，用于控制请求生命周期。
 		//   - userUUID: 用户的唯一标识符。
