@@ -4,11 +4,12 @@ import (
 	"github.com/XiaoLFeng/bamboo-utils/bmodels"
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/os/gtime"
+	"xiao-yi-transit/internal/model/dto/driver"
 )
 
 // CreateDriverReq defines the request for creating a new driver
 type CreateDriverReq struct {
-	g.Meta            `path:"/driver/create" method:"Post" tags:"司机管理" sm:"创建司机" dc:"用于创建新的司机信息"`
+	g.Meta            `path:"/driver" method:"Post" tags:"司机管理" sm:"创建司机" dc:"用于创建新的司机信息"`
 	EmployeeId        string      `json:"employee_id" v:"required#工号不能为空" dc:"工号"`
 	Name              string      `json:"name" v:"required#姓名不能为空" dc:"姓名"`
 	Gender            int         `json:"gender" v:"required|in:1,2#性别不能为空|性别只能是1(男)或2(女)" dc:"性别: 1-男, 2-女"`
@@ -27,6 +28,6 @@ type CreateDriverReq struct {
 
 // CreateDriverRes defines the response for creating a new driver
 type CreateDriverRes struct {
-	g.Meta                       `mime:"application/json;charset=utf-8"`
-	*bmodels.ResponseDTO[string] // Return the driver UUID
+	g.Meta `mime:"application/json;charset=utf-8"`
+	*bmodels.ResponseDTO[*driver.DriverDetailItemDTO]
 }

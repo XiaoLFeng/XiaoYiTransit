@@ -9,7 +9,7 @@ import (
 
 // UpdateDriverReq defines the request for updating a driver
 type UpdateDriverReq struct {
-	g.Meta            `path:"/driver/update" method:"Put" tags:"司机管理" sm:"更新司机信息" dc:"用于更新司机信息"`
+	g.Meta            `path:"/driver" method:"Put" tags:"司机管理" sm:"更新司机信息" dc:"用于更新司机信息"`
 	DriverUuid        string      `json:"driver_uuid" v:"required#司机UUID不能为空" dc:"司机UUID"`
 	EmployeeId        string      `json:"employee_id" v:"required#工号不能为空" dc:"工号"`
 	Name              string      `json:"name" v:"required#姓名不能为空" dc:"姓名"`
@@ -29,6 +29,6 @@ type UpdateDriverReq struct {
 
 // UpdateDriverRes defines the response for updating a driver
 type UpdateDriverRes struct {
-	g.Meta `mime:"application/json;charset=utf-8"`
+	g.Meta                           `mime:"application/json;charset=utf-8"`
 	*bmodels.ResponseDTO[*types.Nil] // No data returned, just success message
 }

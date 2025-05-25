@@ -2,11 +2,11 @@ package driver
 
 import (
 	"context"
-	"github.com/XiaoLFeng/bamboo-utils/berror"
 	"github.com/XiaoLFeng/bamboo-utils/blog"
 	"github.com/XiaoLFeng/bamboo-utils/bresult"
-	"github.com/gogf/gf/v2/util/gconv"
+	"github.com/gogf/gf/v2/os/gtime"
 	"xiao-yi-transit/api/driver/v1"
+	dtoDriver "xiao-yi-transit/internal/model/dto/driver"
 	"xiao-yi-transit/internal/model/entity"
 	"xiao-yi-transit/internal/service"
 )
@@ -50,8 +50,29 @@ func (c *ControllerV1) CreateDriver(ctx context.Context, req *v1.CreateDriverReq
 		return nil, errorCode
 	}
 
+	// 数据整合
+	driverInfo := &dtoDriver.DriverDetailItemDTO{
+		DriverUuid:        driverUuid,
+		EmployeeId:        req.EmployeeId,
+		Name:              req.Name,
+		Gender:            req.Gender,
+		IdCard:            req.IdCard,
+		Phone:             req.Phone,
+		EmergencyContact:  req.EmergencyContact,
+		EmergencyPhone:    req.EmergencyPhone,
+		LicenseNumber:     req.LicenseNumber,
+		LicenseType:       req.LicenseType,
+		LicenseExpiryDate: req.LicenseExpiryDate,
+		EntryDate:         req.EntryDate,
+		Status:            req.Status,
+		Address:           req.Address,
+		Notes:             req.Notes,
+		CreatedAt:         gtime.Now(),
+		UpdatedAt:         gtime.Now(),
+	}
+
 	// 返回结果
 	return &v1.CreateDriverRes{
-		ResponseDTO: bresult.SuccessHasData(ctx, "创建司机成功", driverUuid),
+		ResponseDTO: bresult.SuccessHasData(ctx, "创建司机成功", driverInfo),
 	}, nil
 }

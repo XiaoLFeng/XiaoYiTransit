@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/XiaoLFeng/bamboo-utils/berror"
 	"github.com/XiaoLFeng/bamboo-utils/blog"
-	"github.com/gogf/gf/v2/util/guid"
+	"github.com/google/uuid"
 	"xiao-yi-transit/internal/dao"
 	"xiao-yi-transit/internal/model/entity"
 )
@@ -22,7 +22,7 @@ func (s *sDriver) CreateDriver(ctx context.Context, driver *entity.Driver) (stri
 	blog.ServiceInfo(ctx, "CreateDriver", "创建司机: %s", driver.Name)
 
 	// 生成UUID
-	driver.DriverUuid = guid.S()
+	driver.DriverUuid = uuid.New().String()
 
 	// 创建司机信息
 	driverModel := dao.Driver.Ctx(ctx)

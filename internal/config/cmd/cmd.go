@@ -29,13 +29,11 @@ var (
 				group.Middleware(bmiddle.BambooHandlerResponse)
 
 				group.Group("/v1", func(v1 *ghttp.RouterGroup) {
-					v1.Bind()
+					v1.Bind(
+						auth.NewV1(),
+						driver.NewV1(),
+					)
 				})
-				group.Middleware(ghttp.MiddlewareHandlerResponse)
-				group.Bind(
-					auth.NewV1(),
-					driver.NewV1(),
-				)
 			})
 
 			s.Run()
