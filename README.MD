@@ -7,11 +7,11 @@
 ## 2. 主要功能
 
 * **车辆管理:**
-    * [ ] 车辆信息录入（车牌号、型号、购买日期、状态等）
-    * [ ] 车辆信息查询、修改、删除
-    * [ ] 车辆状态跟踪（运营中、维修中、报废等）
-    * [ ] 车辆年检记录
-    * [ ] 车辆保险记录
+    * [X] 车辆信息录入（车牌号、型号、购买日期、状态等）
+    * [X] 车辆信息查询、修改、删除
+    * [X] 车辆状态跟踪（运营中、维修中、报废等）
+    * [X] 车辆年检记录
+    * [X] 车辆保险记录
 * **线路管理:**
     * [ ] 公交线路信息录入（线路编号、起止站点、途经站点、票价等）
     * [ ] 线路信息查询、修改、删除
@@ -77,33 +77,11 @@ cd [项目目录名称]
         link: "mysql:user:password@tcp(127.0.0.1:3306)/your_database_name?charset=utf8mb4&parseTime=true&loc=Local"
         debug: true # 开发环境建议开启
 
-    # Redis 配置 (如果使用)
-    redis:
-      default:
-        address: "127.0.0.1:6379"
-        db: 0
-        # pass: "your_redis_password" # 如果有密码
-
     # 服务器配置
     server:
       address: ":8000" # API服务监听地址和端口
       # ... 其他配置
     ```
-
-2.  **数据库迁移:**
-    * **自动迁移 (推荐):** GoFrame 提供了强大的 migration 工具。
-        ```bash
-        # 安装 gf-cli (如果尚未安装)
-        go install [github.com/gogf/gf/cmd/gf/v2@latest](https://github.com/gogf/gf/cmd/gf/v2@latest)
-
-        # 在项目根目录下执行 migration (假设你的 migration 文件已创建在 internal/packed 目录下或通过 gf gen dao 生成)
-        # 如果你是手动创建的 SQL 文件，请先导入到数据库
-        # 如果使用 gf gen service 生成了 service，通常会自动处理表结构（如果配置了 autoMigrateTables）
-        # 或者，你可以在启动时通过代码逻辑进行自动建表和初始化数据。
-        # 例如，在 main.go 中添加:
-        # g.DB().AutoMigrate(ctx, &model.YourTable{})
-        ```
-    * **手动导入:** 将项目提供的 SQL 文件 (例如 `manifest/sql/schema.sql`) 导入到你的数据库中。
 
 ### 5.3. 依赖安装
 

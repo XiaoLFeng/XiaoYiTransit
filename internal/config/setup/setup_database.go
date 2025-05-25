@@ -22,6 +22,8 @@ var databaseList = []string{
 	"xf_maintenance_item.sql",     // 维护项目表（可能依赖维护记录表）
 	"xf_schedule_template.sql",    // 调度模板表
 	"xf_schedule.sql",             // 调度表（依赖线路、车辆和司机表）
+	"xf_vehicle_inspection.sql",   // 车辆检查表（依赖车辆表）
+	"xf_vehicle_insurance.sql",    // 车辆保险表（依赖车辆表）
 }
 
 // DatabaseSetup 完成数据库的初始化配置。

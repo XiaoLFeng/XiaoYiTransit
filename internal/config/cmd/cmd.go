@@ -6,6 +6,7 @@ import (
 	"github.com/XiaoLFeng/bamboo-utils/bhandler/bmiddle"
 	"xiao-yi-transit/internal/controller/auth"
 	"xiao-yi-transit/internal/controller/driver"
+	"xiao-yi-transit/internal/controller/vehicle"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
@@ -32,6 +33,7 @@ var (
 					v1.Bind(
 						auth.NewV1(),
 						driver.NewV1(),
+						vehicle.NewV1(),
 					)
 				})
 			})

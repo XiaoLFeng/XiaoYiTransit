@@ -9,4 +9,5 @@ import (
 	_ "xiao-yi-transit/internal/logic/driver"
 	_ "xiao-yi-transit/internal/logic/token"
 	_ "xiao-yi-transit/internal/logic/user"
+	_ "xiao-yi-transit/internal/logic/vehicle"
 )
