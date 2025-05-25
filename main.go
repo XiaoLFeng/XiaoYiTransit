@@ -20,6 +20,8 @@ func main() {
 	// 项目初始化
 	su := setup.NewSetup(ctx)
 	su.DatabaseSetup()
+	su.DefaultRoleSetup()
+	su.DefaultUserSetup()
 
 	// 项目启动
 	cmd.Main.Run(ctx)

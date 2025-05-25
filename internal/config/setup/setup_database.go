@@ -6,6 +6,7 @@ import (
 )
 
 var databaseList = []string{
+	"xf_system.sql",               // 系统表
 	"xf_role.sql",                 // 角色表
 	"xf_station.sql",              // 站点表
 	"xf_vehicle.sql",              // 车辆表
