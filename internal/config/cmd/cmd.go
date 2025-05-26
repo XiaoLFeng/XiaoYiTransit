@@ -6,6 +6,7 @@ import (
 	"github.com/XiaoLFeng/bamboo-utils/bhandler/bmiddle"
 	"xiao-yi-transit/internal/controller/auth"
 	"xiao-yi-transit/internal/controller/driver"
+	"xiao-yi-transit/internal/controller/maintenance"
 	"xiao-yi-transit/internal/controller/route"
 	"xiao-yi-transit/internal/controller/vehicle"
 
@@ -36,6 +37,7 @@ var (
 						driver.NewV1(),
 						vehicle.NewV1(),
 						route.NewV1(),
+						maintenance.NewV1(),
 					)
 				})
 			})
