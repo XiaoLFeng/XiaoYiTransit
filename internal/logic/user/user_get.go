@@ -63,7 +63,6 @@ func (s *sUser) GetUserByUsername(ctx context.Context, username string) (*entity
 		return nil, &berror.ErrDatabaseError
 	}
 	if getUser == nil {
-		blog.ServiceError(ctx, "GetUserByUsername", "获取用户 %s 信息失败: 用户不存在", username)
 		return nil, cerror.ErrUserNotExist
 	}
 

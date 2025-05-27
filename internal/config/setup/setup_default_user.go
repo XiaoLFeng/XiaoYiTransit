@@ -22,10 +22,9 @@ import (
 //   - 数据库操作失败
 //   - 数据格式不符合预期
 func (setup *SystemSetup) DefaultUserSetup() {
-	systemModel := dao.System.Ctx(setup.ctx)
 	// 检查系统表是否存在超级管理员
 	var systemEntity *entity.System
-	sqlErr := systemModel.Where(&do.System{Key: consts.SystemKeyForSuperUserUUID}).Scan(&systemEntity)
+	sqlErr := dao.System.Ctx(setup.ctx).Where(&do.System{Key: consts.SystemKeyForSuperUserUUID}).Scan(&systemEntity)
 	if sqlErr != nil {
 		blog.BambooError(setup.ctx, "DefaultUserSetup", "查询系统表失败: %s", sqlErr.Error())
 		panic(sqlErr)
@@ -33,9 +32,8 @@ func (setup *SystemSetup) DefaultUserSetup() {
 	if systemEntity != nil {
 		blog.BambooInfo(setup.ctx, "DefaultUserSetup", "系统表已存在超级管理员: %s", systemEntity.Val)
 		// 查找用户是否存在
-		userModel := dao.User.Ctx(setup.ctx)
 		var userEntity *entity.User
-		sqlErr = userModel.Where(&do.User{UserUuid: systemEntity.Val}).Scan(&userEntity)
+		sqlErr = dao.User.Ctx(setup.ctx).Where(&do.User{UserUuid: systemEntity.Val}).Scan(&userEntity)
 		if sqlErr != nil {
 			blog.BambooError(setup.ctx, "DefaultUserSetup", "查询用户表失败: %s", sqlErr.Error())
 			panic(sqlErr)
@@ -45,6 +43,8 @@ func (setup *SystemSetup) DefaultUserSetup() {
 			return
 		}
 		blog.BambooInfo(setup.ctx, "DefaultUserSetup", "系统表存在超级管理员，但用户表中不存在，重新创建用户")
+	} else {
+		blog.BambooInfo(setup.ctx, "DefaultUserSetup", "系统表不存在超级管理员，开始创建")
 	}
 	createSuperUser(setup.ctx)
 }
@@ -74,12 +74,19 @@ func createSuperUser(ctx context.Context) {
 	}
 
 	// 插入用户到数据库
-	userModel := dao.User.Ctx(ctx)
-	_, sqlErr = userModel.Save(superUser)
-	if sqlErr != nil {
-	}
+	_, sqlErr = dao.User.Ctx(ctx).OmitEmpty().Insert(superUser)
 	if sqlErr != nil {
 		blog.BambooError(ctx, "createSuperUser", "创建超级管理员用户失败: %s", sqlErr.Error())
+		panic(sqlErr)
+	}
+
+	_, sqlErr = dao.System.Ctx(ctx).OmitEmpty().Insert(&entity.System{
+		SystemUuid: uuid.New().String(),
+		Key:        consts.SystemKeyForSuperUserUUID,
+		Val:        superUser.UserUuid,
+	})
+	if sqlErr != nil {
+		blog.BambooError(ctx, "createSuperUser", "创建系统表记录失败: %s", sqlErr.Error())
 		panic(sqlErr)
 	}
 
