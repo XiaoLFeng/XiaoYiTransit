@@ -5,6 +5,7 @@ import (
 	"github.com/XiaoLFeng/bamboo-utils/berror"
 	"github.com/XiaoLFeng/bamboo-utils/blog"
 	"xiao-yi-transit/internal/dao"
+	"xiao-yi-transit/internal/model/do"
 	"xiao-yi-transit/internal/model/entity"
 )
 
@@ -20,11 +21,9 @@ import (
 func (s *sDriver) GetDriverById(ctx context.Context, driverUuid string) (*entity.Driver, *berror.ErrorCode) {
 	blog.ServiceInfo(ctx, "GetDriverById", "获取司机 %s 信息", driverUuid)
 
-	driverModel := dao.Driver.Ctx(ctx)
-
 	// 查询司机信息
 	var getDriver *entity.Driver
-	sqlErr := driverModel.Where(&entity.Driver{DriverUuid: driverUuid}).Scan(&getDriver)
+	sqlErr := dao.Driver.Ctx(ctx).Where(&do.Driver{DriverUuid: driverUuid}).Scan(&getDriver)
 	if sqlErr != nil {
 		blog.ServiceError(ctx, "GetDriverById", "获取司机 %s 信息失败: %s", driverUuid, sqlErr.Error())
 		return nil, &berror.ErrDatabaseError
@@ -55,22 +54,20 @@ func (s *sDriver) GetDriverById(ctx context.Context, driverUuid string) (*entity
 func (s *sDriver) GetDriverList(ctx context.Context, page, size int, employeeId, name string, status int) ([]*entity.Driver, int, *berror.ErrorCode) {
 	blog.ServiceInfo(ctx, "GetDriverList", "获取司机列表: page=%d, size=%d", page, size)
 
-	driverModel := dao.Driver.Ctx(ctx)
-	model := driverModel.Clone()
-
 	// 添加筛选条件
+	whereBuilder := dao.Driver.Ctx(ctx).Builder()
 	if employeeId != "" {
-		model = model.Where("employee_id LIKE ?", "%"+employeeId+"%")
+		whereBuilder = whereBuilder.Where("employee_id = ?", employeeId)
 	}
 	if name != "" {
-		model = model.Where("name LIKE ?", "%"+name+"%")
+		whereBuilder = whereBuilder.Where("name LIKE ?", "%"+name+"%")
 	}
 	if status != 0 {
-		model = model.Where("status = ?", status)
+		whereBuilder = whereBuilder.Where("status = ?", status)
 	}
 
 	// 查询总数
-	count, sqlErr := model.Count()
+	count, sqlErr := dao.Driver.Ctx(ctx).Count()
 	if sqlErr != nil {
 		blog.ServiceError(ctx, "GetDriverList", "获取司机总数失败: %s", sqlErr.Error())
 		return nil, 0, &berror.ErrDatabaseError
@@ -78,7 +75,7 @@ func (s *sDriver) GetDriverList(ctx context.Context, page, size int, employeeId,
 
 	// 查询列表
 	var drivers []*entity.Driver
-	sqlErr = model.Page(page, size).Order("created_at DESC").Scan(&drivers)
+	sqlErr = dao.Driver.Ctx(ctx).Page(page, size).Order("created_at DESC").Scan(&drivers)
 	if sqlErr != nil {
 		blog.ServiceError(ctx, "GetDriverList", "获取司机列表失败: %s", sqlErr.Error())
 		return nil, 0, &berror.ErrDatabaseError

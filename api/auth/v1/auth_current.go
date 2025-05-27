@@ -12,5 +12,5 @@ type AuthCurrentReq struct {
 
 type AuthCurrentRes struct {
 	g.Meta `mime:"application/json;charset=utf-8"`
-	*bmodels.ResponseDTO[*back.AuthLoginBackDTO]
+	*bmodels.ResponseDTO[*back.AuthCurrentBackDTO]
 }

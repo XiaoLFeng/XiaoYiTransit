@@ -3,6 +3,7 @@ package utility
 import (
 	"context"
 	"github.com/XiaoLFeng/bamboo-utils/berror"
+	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
 	"xiao-yi-transit/internal/custom/cerror"
 	"xiao-yi-transit/internal/dao"
@@ -27,7 +28,9 @@ import (
 func GetUserByCtx(ctx context.Context) (*entity.User, *berror.ErrorCode) {
 	req := ghttp.RequestFromCtx(ctx)
 	getHeader := req.GetHeader("Authorization")
-	if getHeader[:5] == "Bearer" {
+	g.Log().Debug(ctx, "GetUserByCtx", "<UNK>: %s", getHeader[:6])
+	g.Log().Debug(ctx, "GetUserByCtx", "<UNK>: %s", getHeader[7:])
+	if getHeader[:6] == "Bearer" {
 		tokenUUID := getHeader[7:]
 		if tokenUUID == "" {
 			return nil, &berror.ErrUnauthorized

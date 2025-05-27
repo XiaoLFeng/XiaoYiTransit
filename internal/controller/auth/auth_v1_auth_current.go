@@ -43,22 +43,9 @@ func (c *ControllerV1) AuthCurrent(ctx context.Context, req *v1.AuthCurrentReq) 
 		return nil, errorCode
 	}
 
-	// 生成token
-	iToken := service.Token()
-	tokenEntity, errorCode := iToken.GenerateUserToken(ctx, userEntity)
-	if errorCode != nil {
-		return nil, errorCode
-	}
-
 	// 数据转换
 	var backUser *base.UserInfoDTO
 	operateErr := gconv.Struct(userEntity, &backUser)
-	if operateErr != nil {
-		blog.ServiceError(ctx, "AuthLogin", "数据转换失败: %s", operateErr.Error())
-		return nil, &berror.ErrInternalServer
-	}
-	var backToken *base.TokenDTO
-	operateErr = gconv.Struct(tokenEntity, &backToken)
 	if operateErr != nil {
 		blog.ServiceError(ctx, "AuthLogin", "数据转换失败: %s", operateErr.Error())
 		return nil, &berror.ErrInternalServer
@@ -70,14 +57,13 @@ func (c *ControllerV1) AuthCurrent(ctx context.Context, req *v1.AuthCurrentReq) 
 		return nil, &berror.ErrInternalServer
 	}
 
-	backAuthLogin := &back.AuthLoginBackDTO{
-		User:  backUser,
-		Token: backToken,
-		Role:  backRole,
+	backCurrent := &back.AuthCurrentBackDTO{
+		User: backUser,
+		Role: backRole,
 	}
 
 	// 返回结果
 	return &v1.AuthCurrentRes{
-		ResponseDTO: bresult.SuccessHasData(ctx, "登录成功", backAuthLogin),
+		ResponseDTO: bresult.SuccessHasData(ctx, "登录成功", backCurrent),
 	}, nil
 }
