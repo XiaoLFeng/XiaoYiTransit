@@ -38,7 +38,6 @@ func (s *sToken) GenerateUserToken(ctx context.Context, user *entity.User) (*ent
 	request := ghttp.RequestFromCtx(ctx)
 
 	// 生成 Token
-	tokenModel := dao.UserToken.Ctx(ctx)
 	token := &entity.UserToken{
 		TokenUuid: uuid.New().String(),
 		UserUuid:  user.UserUuid,
@@ -48,7 +47,7 @@ func (s *sToken) GenerateUserToken(ctx context.Context, user *entity.User) (*ent
 		ExpiresAt: gtime.Now().Add(6 * time.Hour),
 	}
 	// 插入数据库
-	_, sqlErr := tokenModel.Insert(token)
+	_, sqlErr := dao.UserToken.Ctx(ctx).OmitEmpty().Insert(token)
 	if sqlErr != nil {
 		blog.ServiceError(ctx, "GenerateUserToken", "生成用户 %s 的 Token 失败: %s", user.Username, sqlErr.Error())
 		return nil, &berror.ErrDatabaseError

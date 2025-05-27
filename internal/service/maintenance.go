@@ -25,7 +25,6 @@ type (
 		//   - 创建成功的维修记录UUID。
 		//   - 错误码的指针，表示可能的错误类型。
 		CreateMaintenance(ctx context.Context, maintenance *entity.Maintenance) (string, *berror.ErrorCode)
-
 		// DeleteMaintenance 删除维修记录。
 		//
 		// 参数:
@@ -35,7 +34,6 @@ type (
 		// 返回:
 		//   - 错误码的指针，表示可能的错误类型。
 		DeleteMaintenance(ctx context.Context, maintenanceUuid string) *berror.ErrorCode
-
 		// GetMaintenanceById 根据维修记录UUID获取维修记录信息。
 		//
 		// 参数:
@@ -46,7 +44,6 @@ type (
 		//   - 维修记录信息的指针，包含详细维修数据。
 		//   - 错误码的指针，表示错误类型，如维修记录不存在或内部错误。
 		GetMaintenanceById(ctx context.Context, maintenanceUuid string) (*entity.Maintenance, *berror.ErrorCode)
-
 		// GetMaintenanceList 获取维修记录列表。
 		//
 		// 参数:
@@ -64,7 +61,6 @@ type (
 		//   - 总数量。
 		//   - 错误码的指针，表示可能的错误类型。
 		GetMaintenanceList(ctx context.Context, page int, size int, vehicleUuid string, maintenanceType int, status int, startDate *gtime.Time, endDate *gtime.Time) ([]*entity.Maintenance, int, *berror.ErrorCode)
-
 		// UpdateMaintenance 更新维修记录。
 		//
 		// 参数:

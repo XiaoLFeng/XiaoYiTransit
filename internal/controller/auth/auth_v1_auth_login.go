@@ -40,6 +40,14 @@ func (c *ControllerV1) AuthLogin(ctx context.Context, req *v1.AuthLoginReq) (res
 		return nil, errorCode
 	}
 
+	// 获取角色
+	iRole := service.Role()
+	getRole, errorCode := iRole.GetRoleByUUID(ctx, userEntity.RoleUuid)
+	if errorCode != nil {
+		blog.ServiceError(ctx, "AuthLogin", "获取角色信息失败: %s", errorCode.Error())
+		return nil, errorCode
+	}
+
 	// 生成token
 	iToken := service.Token()
 	tokenEntity, errorCode := iToken.GenerateUserToken(ctx, userEntity)
@@ -60,10 +68,17 @@ func (c *ControllerV1) AuthLogin(ctx context.Context, req *v1.AuthLoginReq) (res
 		blog.ServiceError(ctx, "AuthLogin", "数据转换失败: %s", operateErr.Error())
 		return nil, &berror.ErrInternalServer
 	}
+	var backRole *base.RoleDTO
+	operateErr = gconv.Struct(getRole, &backRole)
+	if operateErr != nil {
+		blog.ServiceError(ctx, "AuthLogin", "数据转换失败: %s", operateErr.Error())
+		return nil, &berror.ErrInternalServer
+	}
 
 	backAuthLogin := &back.AuthLoginBackDTO{
 		User:  backUser,
 		Token: backToken,
+		Role:  backRole,
 	}
 
 	// 返回结果

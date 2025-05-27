@@ -6,6 +6,7 @@ import (
 	"github.com/XiaoLFeng/bamboo-utils/blog"
 	"xiao-yi-transit/internal/custom/cerror"
 	"xiao-yi-transit/internal/dao"
+	"xiao-yi-transit/internal/model/do"
 	"xiao-yi-transit/internal/model/entity"
 )
 
@@ -23,11 +24,9 @@ import (
 func (s *sUser) GetUserById(ctx context.Context, userUUID string) (*entity.User, *berror.ErrorCode) {
 	blog.ServiceInfo(ctx, "GetUserById", "获取用户 %s 信息", userUUID)
 
-	userModel := dao.User.Ctx(ctx)
-
 	// 查询用户信息
 	var getUser *entity.User
-	sqlErr := userModel.Where(&entity.User{UserUuid: userUUID}).Scan(&getUser)
+	sqlErr := dao.User.Ctx(ctx).Where(&do.User{UserUuid: userUUID}).Scan(&getUser)
 	if sqlErr != nil {
 		blog.ServiceError(ctx, "GetUserById", "获取用户 %s 信息失败: %s", userUUID, sqlErr.Error())
 		return nil, &berror.ErrDatabaseError
@@ -53,11 +52,9 @@ func (s *sUser) GetUserById(ctx context.Context, userUUID string) (*entity.User,
 func (s *sUser) GetUserByUsername(ctx context.Context, username string) (*entity.User, *berror.ErrorCode) {
 	blog.ServiceInfo(ctx, "GetUserByUsername", "获取用户 %s 信息", username)
 
-	userModel := dao.User.Ctx(ctx)
-
 	// 查询用户信息
 	var getUser *entity.User
-	sqlErr := userModel.Where(&entity.User{Username: username}).Scan(&getUser)
+	sqlErr := dao.User.Ctx(ctx).Where(&do.User{Username: username}).Scan(&getUser)
 	if sqlErr != nil {
 		blog.ServiceError(ctx, "GetUserByUsername", "获取用户 %s 信息失败: %s", username, sqlErr.Error())
 		return nil, &berror.ErrDatabaseError
