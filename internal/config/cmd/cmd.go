@@ -8,6 +8,7 @@ import (
 	"xiao-yi-transit/internal/controller/driver"
 	"xiao-yi-transit/internal/controller/maintenance"
 	"xiao-yi-transit/internal/controller/route"
+	"xiao-yi-transit/internal/controller/station"
 	"xiao-yi-transit/internal/controller/vehicle"
 
 	"github.com/gogf/gf/v2/frame/g"
@@ -38,6 +39,7 @@ var (
 						vehicle.NewV1(),
 						route.NewV1(),
 						maintenance.NewV1(),
+						station.NewV1(),
 					)
 				})
 			})
