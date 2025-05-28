@@ -84,3 +84,26 @@ func (s *sDriver) GetDriverList(ctx context.Context, page, size int, employeeId,
 	// 返回结果
 	return drivers, count, nil
 }
+
+// GetDriverSimpleList 获取司机简易列表。
+//
+// 参数:
+//   - ctx: 上下文信息，用于控制请求生命周期。
+//
+// 返回:
+//   - 司机简易列表。
+//   - 错误码的指针，表示可能的错误类型。
+func (s *sDriver) GetDriverSimpleList(ctx context.Context) ([]*entity.Driver, *berror.ErrorCode) {
+	blog.ServiceInfo(ctx, "GetDriverSimpleList", "获取司机简易列表")
+
+	// 查询司机列表
+	var drivers []*entity.Driver
+	sqlErr := dao.Driver.Ctx(ctx).Order("name ASC").Scan(&drivers)
+	if sqlErr != nil {
+		blog.ServiceError(ctx, "GetDriverSimpleList", "获取司机简易列表失败: %s", sqlErr.Error())
+		return nil, &berror.ErrDatabaseError
+	}
+
+	// 返回结果
+	return drivers, nil
+}

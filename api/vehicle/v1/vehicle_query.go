@@ -22,6 +22,15 @@ type GetVehicleListRes struct {
 	*bmodels.ResponseDTO[*vehicle.PagedVehicleListDTO]
 }
 
+type GetVehicleSimpleListReq struct {
+	g.Meta `path:"/vehicles/simple" method:"Get" tags:"车辆管理" sm:"获取车辆简易列表" dc:"用于获取车辆简易列表信息"`
+}
+
+type GetVehicleSimpleListRes struct {
+	g.Meta `mime:"application/json;charset=utf-8"`
+	*bmodels.ResponseDTO[*vehicle.SimpleVehicleListDTO]
+}
+
 // GetVehicleDetailReq defines the request for getting vehicle details
 type GetVehicleDetailReq struct {
 	g.Meta      `path:"/vehicle/{vehicleUuid}" method:"Get" tags:"车辆管理" sm:"获取车辆详情" dc:"用于获取车辆详细信息"`

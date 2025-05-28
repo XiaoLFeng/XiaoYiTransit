@@ -4,6 +4,18 @@ import (
 	"github.com/gogf/gf/v2/os/gtime"
 )
 
+// SimpleVehicleItemDTO defines a single vehicle item in the simple list
+type SimpleVehicleItemDTO struct {
+	VehicleUuid string `json:"vehicle_uuid" dc:"车辆UUID"`
+	PlateNumber string `json:"plate_number" dc:"车牌号"`
+	Model       string `json:"model" dc:"车辆型号"`
+}
+
+// SimpleVehicleListDTO defines a simple list of vehicles
+type SimpleVehicleListDTO struct {
+	List []*SimpleVehicleItemDTO `json:"list" dc:"车辆列表"`
+}
+
 // GetVehicleListReqDTO defines the request for getting a list of vehicles
 type GetVehicleListReqDTO struct {
 	Page        int    `json:"page" d:"1" v:"min:1#页码最小为1" dc:"页码"`

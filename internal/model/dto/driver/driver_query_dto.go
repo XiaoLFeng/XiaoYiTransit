@@ -4,6 +4,18 @@ import (
 	"github.com/gogf/gf/v2/os/gtime"
 )
 
+// SimpleDriverItemDTO defines a single driver item in the simple list
+type SimpleDriverItemDTO struct {
+	DriverUuid string `json:"driver_uuid" dc:"司机UUID"`
+	EmployeeId string `json:"employee_id" dc:"工号"`
+	Name       string `json:"name" dc:"姓名"`
+}
+
+// SimpleDriverListDTO defines a simple list of drivers
+type SimpleDriverListDTO struct {
+	List []*SimpleDriverItemDTO `json:"list" dc:"司机列表"`
+}
+
 // GetDriverListReqDTO defines the request for getting a list of drivers
 type GetDriverListReqDTO struct {
 	Page       int    `json:"page" d:"1" v:"min:1#页码最小为1" dc:"页码"`

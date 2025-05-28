@@ -22,6 +22,7 @@ type IVehicleV1 interface {
 	DeleteVehicleInsurance(ctx context.Context, req *v1.DeleteVehicleInsuranceReq) (res *v1.DeleteVehicleInsuranceRes, err error)
 	GetVehicleInsuranceList(ctx context.Context, req *v1.GetVehicleInsuranceListReq) (res *v1.GetVehicleInsuranceListRes, err error)
 	GetVehicleList(ctx context.Context, req *v1.GetVehicleListReq) (res *v1.GetVehicleListRes, err error)
+	GetVehicleSimpleList(ctx context.Context, req *v1.GetVehicleSimpleListReq) (res *v1.GetVehicleSimpleListRes, err error)
 	GetVehicleDetail(ctx context.Context, req *v1.GetVehicleDetailReq) (res *v1.GetVehicleDetailRes, err error)
 	UpdateVehicle(ctx context.Context, req *v1.UpdateVehicleReq) (res *v1.UpdateVehicleRes, err error)
 }

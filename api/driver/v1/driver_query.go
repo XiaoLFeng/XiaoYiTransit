@@ -22,6 +22,15 @@ type GetDriverListRes struct {
 	*bmodels.ResponseDTO[*driver.PagedDriverListDTO]
 }
 
+type GetDriverSimpleListReq struct {
+	g.Meta `path:"/driver/list/simple" method:"Get" tags:"司机管理" sm:"获取司机简易列表" dc:"用于获取司机的简易列表信息"`
+}
+
+type GetDriverSimpleListRes struct {
+	g.Meta `mime:"application/json;charset=utf-8"`
+	*bmodels.ResponseDTO[*driver.SimpleDriverListDTO]
+}
+
 // GetDriverDetailReq defines the request for getting driver details
 type GetDriverDetailReq struct {
 	g.Meta     `path:"/driver/detail" method:"Get" tags:"司机管理" sm:"获取司机详情" dc:"用于获取司机详细信息"`

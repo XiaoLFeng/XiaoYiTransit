@@ -59,6 +59,15 @@ type (
 		//   - 总数量。
 		//   - 错误码的指针，表示可能的错误类型。
 		GetDriverList(ctx context.Context, page int, size int, employeeId string, name string, status int) ([]*entity.Driver, int, *berror.ErrorCode)
+		// GetDriverSimpleList 获取司机简易列表。
+		//
+		// 参数:
+		//   - ctx: 上下文信息，用于控制请求生命周期。
+		//
+		// 返回:
+		//   - 司机简易列表。
+		//   - 错误码的指针，表示可能的错误类型。
+		GetDriverSimpleList(ctx context.Context) ([]*entity.Driver, *berror.ErrorCode)
 		// GetDriverSchedule 获取司机排班信息。
 		//
 		// 参数:

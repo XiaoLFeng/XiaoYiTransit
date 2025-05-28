@@ -83,3 +83,27 @@ func (s *sVehicle) GetVehicleList(ctx context.Context, page int, size int, plate
 	// 返回结果
 	return vehicles, count, nil
 }
+
+// GetVehicleSimpleList 获取车辆简易列表。
+//
+// 参数:
+//   - ctx: 上下文信息，用于控制请求生命周期。
+//
+// 返回:
+//   - 车辆简易列表。
+//   - 错误码的指针，表示可能的错误类型。
+func (s *sVehicle) GetVehicleSimpleList(ctx context.Context) ([]*entity.Vehicle, *berror.ErrorCode) {
+	blog.ServiceInfo(ctx, "GetVehicleSimpleList", "获取车辆简易列表")
+
+	// 查询车辆列表
+	vehicleModel := dao.Vehicle.Ctx(ctx)
+	var vehicles []*entity.Vehicle
+	err := vehicleModel.Order("plate_number ASC").Scan(&vehicles)
+	if err != nil {
+		blog.ServiceError(ctx, "GetVehicleSimpleList", "获取车辆简易列表失败: %s", err.Error())
+		return nil, &berror.ErrDatabaseError
+	}
+
+	// 返回结果
+	return vehicles, nil
+}

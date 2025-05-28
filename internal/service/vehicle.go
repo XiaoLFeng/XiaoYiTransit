@@ -59,6 +59,15 @@ type (
 		//   - 总数量。
 		//   - 错误码的指针，表示可能的错误类型。
 		GetVehicleList(ctx context.Context, page int, size int, plateNumber string, model string, status int) ([]*entity.Vehicle, int, *berror.ErrorCode)
+		// GetVehicleSimpleList 获取车辆简易列表。
+		//
+		// 参数:
+		//   - ctx: 上下文信息，用于控制请求生命周期。
+		//
+		// 返回:
+		//   - 车辆简易列表。
+		//   - 错误码的指针，表示可能的错误类型。
+		GetVehicleSimpleList(ctx context.Context) ([]*entity.Vehicle, *berror.ErrorCode)
 		// CreateVehicleInspection 创建新的车辆年检记录。
 		//
 		// 参数:
