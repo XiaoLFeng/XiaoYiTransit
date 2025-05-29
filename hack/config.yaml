@@ -9,7 +9,14 @@ gfcli:
         jsonCase:  "Snake"
         removePrefix: "xf_"
         gJsonSupport: true
-
+  build:
+    name:     "XiaoYiTransit"
+    arch:     "amd64,arm64,arm"
+    system:   "linux,darwin,windows"
+    mod:      "none"
+    version:  "v1.0.0"
+    path:   "./dist"
+    extra:    ""
   docker:
     build: "-a amd64 -s linux -p temp -ew"
     tagPrefixes:

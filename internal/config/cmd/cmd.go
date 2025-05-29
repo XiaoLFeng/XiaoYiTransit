@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/XiaoLFeng/bamboo-utils/bhandler/bhook"
 	"github.com/XiaoLFeng/bamboo-utils/bhandler/bmiddle"
+	"github.com/gogf/gf/v2/os/gres"
 	"xiao-yi-transit/internal/controller/auth"
 	"xiao-yi-transit/internal/controller/driver"
 	"xiao-yi-transit/internal/controller/maintenance"
@@ -44,6 +45,14 @@ var (
 				})
 			})
 
+			// 前端 React 打包
+			s.AddStaticPath("/assets", "public/assets")
+			s.AddStaticPath("/vite.svg", "public/vite.svg")
+			s.BindHandler("/*", func(r *ghttp.Request) {
+				r.Response.Write(gres.GetContent("public/index.html"))
+			})
+
+			// 项目启动
 			s.Run()
 			return nil
 		},

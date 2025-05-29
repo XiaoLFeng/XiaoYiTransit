@@ -19,4 +19,7 @@ bin
 **/config/config.yaml
 
 ### cutsom ignore file ###
-packed_resource.go
+packed_template.go
+/config.yaml
+resource/public
+dist/
