@@ -30,7 +30,7 @@ func (s *sVehicle) UpdateVehicle(ctx context.Context, vehicle *entity.Vehicle) *
 
 	// 更新车辆信息
 	vehicleModel := dao.Vehicle.Ctx(ctx)
-	_, sqlErr := vehicleModel.Where("vehicle_uuid", vehicle.VehicleUuid).Update(vehicle)
+	_, sqlErr := vehicleModel.Where("vehicle_uuid", vehicle.VehicleUuid).OmitEmpty().Update(vehicle)
 	if sqlErr != nil {
 		blog.ServiceError(ctx, "UpdateVehicle", "更新车辆失败: %s", sqlErr.Error())
 		return &berror.ErrDatabaseError

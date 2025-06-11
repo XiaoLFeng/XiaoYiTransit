@@ -183,7 +183,7 @@ func (s *sVehicle) UpdateVehicleInspection(ctx context.Context, inspection *enti
 
 	// 更新年检记录
 	inspectionModel := dao.VehicleInspection.Ctx(ctx)
-	_, sqlErr := inspectionModel.Where("inspection_uuid", inspection.InspectionUuid).Update(inspection)
+	_, sqlErr := inspectionModel.Where("inspection_uuid", inspection.InspectionUuid).OmitEmpty().Update(inspection)
 	if sqlErr != nil {
 		blog.ServiceError(ctx, "UpdateVehicleInspection", "更新车辆年检记录失败: %s", sqlErr.Error())
 		return &berror.ErrDatabaseError

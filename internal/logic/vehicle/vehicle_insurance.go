@@ -187,7 +187,7 @@ func (s *sVehicle) UpdateVehicleInsurance(ctx context.Context, insurance *entity
 
 	// 更新保险记录
 	insuranceModel := dao.VehicleInsurance.Ctx(ctx)
-	_, sqlErr := insuranceModel.Where("insurance_uuid", insurance.InsuranceUuid).Update(insurance)
+	_, sqlErr := insuranceModel.Where("insurance_uuid", insurance.InsuranceUuid).OmitEmpty().Update(insurance)
 	if sqlErr != nil {
 		blog.ServiceError(ctx, "UpdateVehicleInsurance", "更新车辆保险记录失败: %s", sqlErr.Error())
 		return &berror.ErrDatabaseError

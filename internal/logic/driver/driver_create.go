@@ -26,7 +26,7 @@ func (s *sDriver) CreateDriver(ctx context.Context, driver *entity.Driver) (stri
 
 	// 创建司机信息
 	driverModel := dao.Driver.Ctx(ctx)
-	_, sqlErr := driverModel.Insert(driver)
+	_, sqlErr := driverModel.OmitEmpty().Insert(driver)
 	if sqlErr != nil {
 		blog.ServiceError(ctx, "CreateDriver", "创建司机失败: %s", sqlErr.Error())
 		return "", &berror.ErrDatabaseError
